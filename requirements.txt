@@ -2,14 +2,15 @@
 streamlit==1.32.0
 
 # Data manipulation and analysis
-pandas==2.2.0
+# pandas queda restringido por geopandas
+pandas
 numpy==1.26.4
 
 # Geospatial core dependencies (orden importante)
-pyproj==3.6.1
-shapely==2.0.2
-fiona==1.9.6
-rtree==1.2.0
+pyproj>=3.3.0
+shapely>=2.0.0
+fiona>=1.8
+rtree>=1.0
 
 # Geospatial libraries
 geopandas==0.14.3
@@ -17,10 +18,10 @@ folium==0.15.1
 streamlit-folium==0.18.0
 
 # Visualization
-matplotlib
+matplotlib>=3.5
 seaborn==0.13.2
 plotly==5.19.0
-mapclassify==2.6.1
+mapclassify>=2.5.0
 
 # File handling
 openpyxl==3.1.2
@@ -31,3 +32,12 @@ requests==2.31.0
 scipy
 ipykernel
 nbformat
+
+# Optional: for reading/writing GeoPackage or other raster/vector formats
+gdal>=3.4.0
+
+# Optional: for interactive plotting
+contextily>=1.3.0
+
+# Jupyter support
+jupyterlab>=3.0
