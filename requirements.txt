@@ -9,7 +9,7 @@ numpy==1.26.4
 # Geospatial core dependencies (orden importante)
 pyproj>=3.3.0
 shapely>=2.0.0
-fiona>=1.8
+fiona>=1.9.5,<1.10
 rtree>=1.0
 
 # Geospatial libraries
