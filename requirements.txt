@@ -17,7 +17,7 @@ folium==0.15.1
 streamlit-folium==0.18.0
 
 # Visualization
-matplotlib==3.8.2
+matplotlib
 seaborn==0.13.2
 plotly==5.19.0
 mapclassify==2.6.1
