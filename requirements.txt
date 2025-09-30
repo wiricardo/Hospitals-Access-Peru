@@ -33,6 +33,8 @@ scipy
 ipykernel
 nbformat
 chardet
+nbimporter
+import-ipynb
 
 # Optional: for reading/writing GeoPackage or other raster/vector formats
 gdal>=3.4.0
