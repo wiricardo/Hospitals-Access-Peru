@@ -104,7 +104,66 @@ with tab2:
         (i,) = st.columns(1, border= True)
 
         with i:
-            with open("../output/lima_proximity.html", 'r', encoding='utf-8') as f:
-                tab2_folium = f.read()
 
-            st.components.v1.html(tab2_folium, height = 800)
+            with st.container():
+
+                st.subheader('Lima')
+                with open("../output/lima_proximity.html", 'r', encoding='utf-8') as f:
+                    fol_1 = f.read()
+
+                st.components.v1.html(fol_1, height = 800)
+
+
+                st.subheader('Loreto')
+                with open("../output/loreto_proximity.html", 'r', encoding='utf-8') as f:
+                    fol_2 = f.read()
+
+                st.components.v1.html(fol_2, height = 800)
+
+with tab3:
+
+    j, k, l = st.columns(3, border= True)
+
+    with j:
+        st.subheader('Mapa de coropletas Nacional (A nivel de Distrito)')
+
+        with open("../output/folium_choropleth_distritos.html", 'r', encoding='utf-8') as f:
+                    fol_3 = f.read()
+
+        st.components.v1.html(fol_3, height = 800)
+
+    with k:
+        st.subheader('Lima')
+
+        with open("../output/folium_proximidad_Lima.html", 'r', encoding='utf-8') as f:
+                    fol_4 = f.read()
+
+        st.components.v1.html(fol_4, height = 800)
+
+    with l:
+         st.subheader('Loreto')
+
+         with open("../output/folium_proximidad_Loreto.html", 'r', encoding='utf-8') as f:
+                    fol_5 = f.read()
+
+         st.components.v1.html(fol_5, height = 800)
+    
+    (m, ) = st.columns(1, border= True)
+
+    with m:
+        st.markdown("""
+#### Lima
+
+* El mapa muestra una **fuerte concentración en el área urbana**: en el *Barrio Obrero Industrial* (cerca de Lima Metropolitana) hay **243 hospitales en un radio de 10 km**.
+* En contraste, en *Yanapampa* no hay hospitales dentro del mismo radio, lo que refleja el aislamiento de estas comunidades rurales en términos de servicios de salud.
+* Esto confirma que la capital acumula la mayor parte de la infraestructura hospitalaria en unas pocas áreas, mejorando el acceso en el centro pero dejando desatendidas las áreas periféricas.
+
+
+#### Loreto
+
+* En Loreto la situación es diferente: en la *localidad Tres de Octubre* (Iquitos) hay **28 hospitales en un radio de 10 km**, lo que muestra cómo la infraestructura se acumula en la ciudad principal.
+* Sin embargo, localidades como *Pueblo Nuevo* no tienen **ningún hospital cercano** dentro del mismo radio, evidenciando el **aislamiento geográfico típico de la Amazonía**.
+* El patrón revela que la red hospitalaria en Loreto depende de unos pocos centros urbanos, mientras que **la dispersión poblacional y las barreras naturales (ríos, selva)** dificultan seriamente el acceso a los servicios de salud.
+
+""")
+    
