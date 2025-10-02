@@ -9,6 +9,10 @@ st.set_page_config(page_title="Geospatial Analysis of Hospitals in Peru", layout
 
 hosp_dist = pd.read_csv('../output/operationao_hospitals_by_department.csv')
 
+# Importacion de foloum cloropeth 
+
+ 
+
 
 
 ## Tabs 
@@ -53,6 +57,8 @@ with tab1:
 # contenido de tab2
 with tab2:
     
+    st.subheader('Análisis por Distrito')
+
     # columnas 
 
     c, d, e = st.columns(3, border= True)
@@ -73,9 +79,32 @@ with tab2:
         st.image('../output/map_3.png', width= 500)
 
 
+    st.subheader('Análisis por Departamento')
+
+    with st.container():
+        # columnas
+        f,g,h = st.columns(3, border= True)
+        
+        with f:
+            st.subheader('Tabla Resumen')
+            st.dataframe(hosp_dist)
+            
+        with g:
+            st.subheader('Cantidad de Hospitales publicos operativos por Departamento')
+            st.bar_chart(hosp_dist, x= 'DEPARTAMENTO', y = 'TOTAL_HOSPITALES', horizontal= True, sort= '-TOTAL_HOSPITALES')
+
+        with h:
+            st.subheader('Mapa de coropletas')
+            st.image('../output/map_department_level_choropleth_map.png')
     
+    st.subheader('Análisis de Proximidad')
 
+    with st.container():
+        #columnas
+        (i,) = st.columns(1, border= True)
 
-    
-    st.bar_chart(hosp_dist, x= 'DEPARTAMENTO', y = 'TOTAL_HOSPITALES', horizontal= True, sort= '-TOTAL_HOSPITALES')
+        with i:
+            with open("../output/lima_proximity.html", 'r', encoding='utf-8') as f:
+                tab2_folium = f.read()
 
+            st.components.v1.html(tab2_folium, height = 800)
