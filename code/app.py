@@ -9,11 +9,6 @@ st.set_page_config(page_title="Geospatial Analysis of Hospitals in Peru", layout
 
 hosp_dist = pd.read_csv('../output/operationao_hospitals_by_department.csv')
 
-# Importacion de foloum cloropeth 
-
- 
-
-
 
 ## Tabs 
 
