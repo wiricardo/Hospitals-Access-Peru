@@ -1,13 +1,16 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+from pathlib import Path
 
 st.set_page_config(page_title="Geospatial Analysis of Hospitals in Peru", layout="wide")
 
+# Obtener la ruta base del proyecto de manera robusta
+BASE_DIR = Path(__file__).parent.parent
+OUTPUT_DIR = BASE_DIR / "output"
 
 # Importacion de hospitales operativos por departamento (para el bar chart)
-
-hosp_dist = pd.read_csv('../output/operationao_hospitals_by_department.csv')
+hosp_dist = pd.read_csv(OUTPUT_DIR / 'operationao_hospitals_by_department.csv')
 
 
 ## Tabs 
@@ -42,7 +45,7 @@ with tab1:
     st.subheader("⚙️ Reglas de Filtrado")
     st.markdown("""
     - Se incluyen únicamente hospitales **públicos y operativos**.  
-    - Se excluyen los registros de tipo **privado u “otros”**.  
+    - Se excluyen los registros de tipo **privado u "otros"**.  
     - Se consideran solo los hospitales con **coordenadas válidas (latitud/longitud)**.  
     """)
 
@@ -61,17 +64,17 @@ with tab2:
     with c:    
         st.subheader(" 🏥 Total de Hospitales Públicos por Distrito")
 
-        st.image('../output/map_1.png', width= 500)
+        st.image(str(OUTPUT_DIR / 'map_1.png'), width= 500)
 
     with d: 
         st.subheader(' 🏥 Distritos sin hospitales')
 
-        st.image('../output/map_2.png', width= 500)
+        st.image(str(OUTPUT_DIR / 'map_2.png'), width= 500)
 
     with e:
         st.subheader(' 🏥 Top 10 distritos con mayor número de hospitales')
         
-        st.image('../output/map_3.png', width= 500)
+        st.image(str(OUTPUT_DIR / 'map_3.png'), width= 500)
 
 
     st.subheader('Análisis por Departamento')
@@ -90,7 +93,7 @@ with tab2:
 
         with h:
             st.subheader('Mapa de coropletas')
-            st.image('../output/map_department_level_choropleth_map.png')
+            st.image(str(OUTPUT_DIR / 'map_department_level_choropleth_map.png'))
     
     st.subheader('Análisis de Proximidad')
 
@@ -103,14 +106,14 @@ with tab2:
             with st.container():
 
                 st.subheader('Lima')
-                with open("../output/lima_proximity.html", 'r', encoding='utf-8') as f:
+                with open(OUTPUT_DIR / "lima_proximity.html", 'r', encoding='utf-8') as f:
                     fol_1 = f.read()
 
                 st.components.v1.html(fol_1, height = 800)
 
 
                 st.subheader('Loreto')
-                with open("../output/loreto_proximity.html", 'r', encoding='utf-8') as f:
+                with open(OUTPUT_DIR / "loreto_proximity.html", 'r', encoding='utf-8') as f:
                     fol_2 = f.read()
 
                 st.components.v1.html(fol_2, height = 800)
@@ -122,7 +125,7 @@ with tab3:
     with j:
         st.subheader('Mapa de coropletas Nacional (A nivel de Distrito)')
 
-        with open("../output/folium_choropleth_distritos.html", 'r', encoding='utf-8') as f:
+        with open(OUTPUT_DIR / "folium_choropleth_distritos.html", 'r', encoding='utf-8') as f:
                     fol_3 = f.read()
 
         st.components.v1.html(fol_3, height = 800)
@@ -130,7 +133,7 @@ with tab3:
     with k:
         st.subheader('Lima')
 
-        with open("../output/folium_proximidad_Lima.html", 'r', encoding='utf-8') as f:
+        with open(OUTPUT_DIR / "folium_proximidad_Lima.html", 'r', encoding='utf-8') as f:
                     fol_4 = f.read()
 
         st.components.v1.html(fol_4, height = 800)
@@ -138,7 +141,7 @@ with tab3:
     with l:
          st.subheader('Loreto')
 
-         with open("../output/folium_proximidad_Loreto.html", 'r', encoding='utf-8') as f:
+         with open(OUTPUT_DIR / "folium_proximidad_Loreto.html", 'r', encoding='utf-8') as f:
                     fol_5 = f.read()
 
          st.components.v1.html(fol_5, height = 800)
@@ -161,4 +164,3 @@ with tab3:
 * El patrón revela que la red hospitalaria en Loreto depende de unos pocos centros urbanos, mientras que **la dispersión poblacional y las barreras naturales (ríos, selva)** dificultan seriamente el acceso a los servicios de salud.
 
 """)
-    
