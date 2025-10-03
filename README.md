@@ -19,7 +19,7 @@ Hospitals-Access-Peru/
 
 ## Dashboard
 
-🔗 [View Interactive Dashboard]()  
+🔗 [View Interactive Dashboard](https://hospital-analysis-wiricardo.streamlit.app/)  
 
 ---
 
